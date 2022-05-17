@@ -6,17 +6,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { makeStyles } from '@mui/styles';
-import React, { ReactElement, useCallback, useEffect } from 'react';
+import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 
 import dummyData from '../../../dummyData.json';
 import { getMonthName } from './UserDashboardView';
 
-interface HistoryDataProps {
-  year: number;
-  month: number;
-  co2_saved: number;
-  reward: number;
-}
+type HistoryDataProps = RewardHistory;
 
 type HistoryKeysArr = Array<keyof HistoryDataProps>;
 
@@ -28,8 +23,8 @@ const useStyles = makeStyles(() => ({
 
 export const UserHistoryView = (): ReactElement => {
   const classes = useStyles();
-  const [historyData, setHistoryData] = React.useState<HistoryDataProps[]>([]);
-  const [historyKeys, setHistoryKeys] = React.useState<HistoryKeysArr>([]);
+  const [historyData, setHistoryData] = useState<HistoryDataProps[]>([]);
+  const [historyKeys, setHistoryKeys] = useState<HistoryKeysArr>([]);
 
   // callback for getting the keys of the objects in the array
   const getKeys = useCallback((arr: HistoryDataProps[]) => Object.keys(arr[0]), []);
