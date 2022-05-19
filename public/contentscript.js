@@ -52,7 +52,6 @@ const parentElement = document.querySelector(parentSelectorRef);
 
 parentElement.appendChild(btnElement);
 
-// add the event listener to the button on Hover
 btnElement.addEventListener('mouseenter', () => (btnElement.style.background = secondaryColor));
 
 btnElement.addEventListener('mouseleave', () => (btnElement.style.background = primaryColor));
